@@ -12,7 +12,7 @@ defineProps({
     <article>
       <header class="d-flex justify-content-between flex-row-reverse">
         <h1 class="small mb-1 text-primary">Я</h1>
-        <p class="small mb-1 text-muted">{{ formatDate(date) }}</p>
+        <p class="small mb-1 text-muted">{{ date && formatDate(date) }}</p>
       </header>
       <div class="d-flex flex-row justify-content-end mb-4 pt-1">
         <div>

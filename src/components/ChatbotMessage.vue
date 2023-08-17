@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import { formatDate } from '../utils/utils';
 import { userReactions } from '../db/responses';
+import { IUserReactions } from '../types/types';
 
-defineProps({
-  date: Number,
-  text: String,
-  reactions: [],
-  sendRequest: Function,
-})
+interface IProps {
+  readonly date: number,
+  readonly text: string,
+  readonly reactions?: (keyof IUserReactions)[],
+  readonly onSendRequest: (reactionKey: keyof IUserReactions) => void,
+}
+
+defineProps<IProps>();
 </script>
 
 <template>
   <article>
     <header class="d-flex justify-content-between">
       <h1 class="small mb-1 text-secondary">Помощник</h1>
-      <p class="small mb-1 text-muted">{{ formatDate(date) }}</p>
+      <p class="small mb-1 text-muted">{{ date && formatDate(date) }}</p>
     </header>
     <div class="d-flex flex-row justify-content-start">
       <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 1"
